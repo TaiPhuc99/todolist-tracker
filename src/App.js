@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/shared/Footer";
+import Header from "./components/shared/Header";
+import { TaskProvider } from "./context/TaskContext";
+import { userRoute } from "./routes/UserRoute";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TaskProvider>
+      <Router>
+        <div className="container">
+          <Header />
+
+          <Routes>
+            {userRoute.map((route) => {
+              return (
+                <Route
+                  path={route.path}
+                  exact={route.exact}
+                  element={route.element}
+                />
+              );
+            })}
+          </Routes>
+
+          <Footer />
+        </div>
+      </Router>
+    </TaskProvider>
   );
 }
 
