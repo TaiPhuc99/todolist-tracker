@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FaTimes } from "react-icons/fa";
-import TaskContext from "../context/TaskContext";
+import TaskContext from "../../context/TaskContext";
 
 export default function TaskItem({ taskItemContent }) {
   const { handleDeleteTask, toggleReminder } = useContext(TaskContext);
